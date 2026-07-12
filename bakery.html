@@ -1,0 +1,1160 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pâtisserie AI — Smart Baking Automation</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+    <!-- PARTICLES -->
+    <div class="particles" id="particles"></div>
+
+    <!-- NAVBAR -->
+    <nav id="navbar">
+      <a href="#" class="logo">
+        <div class="logo-icon">🍰</div>
+        Pâtisserie<span
+          style="
+            background: linear-gradient(
+              135deg,
+              var(--pink-deep),
+              var(--sky-deep)
+            );
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+          "
+        >
+          AI</span
+        >
+      </a>
+      <ul class="nav-links">
+        <li><a href="#features">Automation</a></li>
+        <li><a href="#process">Process</a></li>
+        <li><a href="#recipes">Recipes</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#cta" class="nav-cta">Start Baking ✨</a></li>
+      </ul>
+      <button class="hamburger" id="ham" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+    <div class="mobile-menu" id="mobMenu">
+      <a href="#features" onclick="closeMenu()">Automation</a>
+      <a href="#process" onclick="closeMenu()">Process</a>
+      <a href="#recipes" onclick="closeMenu()">Recipes</a>
+      <a href="#pricing" onclick="closeMenu()">Pricing</a>
+      <a href="#cta" class="nav-cta" onclick="closeMenu()">Start Baking ✨</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero" id="home">
+      <div class="hero-bg">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+        <div class="dots-bg"></div>
+      </div>
+
+      <!-- Illustration -->
+      <div class="hero-illustration">
+        <svg viewBox="0 0 540 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="cakeGlow" cx="50%" cy="80%" r="60%">
+              <stop offset="0%" stop-color="rgba(255,182,200,0.3)" />
+              <stop offset="100%" stop-color="transparent" />
+            </radialGradient>
+            <linearGradient id="tier1" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffe0ea" />
+              <stop offset="100%" stop-color="#ffb6c8" />
+            </linearGradient>
+            <linearGradient id="tier2" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#d6f0fb" />
+              <stop offset="100%" stop-color="#87ceeb" />
+            </linearGradient>
+            <linearGradient id="tier3" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#ffe0ea" />
+              <stop offset="100%" stop-color="#ffb6c8" />
+            </linearGradient>
+            <linearGradient id="plateGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#f0f8ff" />
+              <stop offset="100%" stop-color="#e0f4fd" />
+            </linearGradient>
+            <filter id="shadow">
+              <feDropShadow
+                dx="0"
+                dy="8"
+                stdDeviation="10"
+                flood-color="rgba(247,129,159,0.25)"
+              />
+            </filter>
+          </defs>
+          <!-- Glow -->
+          <ellipse cx="270" cy="370" rx="200" ry="30" fill="url(#cakeGlow)" />
+          <!-- Plate -->
+          <ellipse
+            cx="270"
+            cy="360"
+            rx="180"
+            ry="22"
+            fill="url(#plateGrad)"
+            stroke="#d6f0fb"
+            stroke-width="2"
+          />
+          <ellipse
+            cx="270"
+            cy="355"
+            rx="176"
+            ry="18"
+            fill="white"
+            stroke="#e8f6fd"
+            stroke-width="1"
+          />
+          <!-- Tier 3 (bottom) -->
+          <rect
+            x="110"
+            y="290"
+            width="320"
+            height="70"
+            rx="12"
+            fill="url(#tier1)"
+            filter="url(#shadow)"
+          />
+          <ellipse
+            cx="270"
+            cy="290"
+            rx="160"
+            ry="14"
+            fill="#ffcdd8"
+            stroke="#ffb6c8"
+            stroke-width="1.5"
+          />
+          <ellipse cx="270" cy="360" rx="160" ry="14" fill="#ffb6c8" />
+          <!-- Tier 3 decorations -->
+          <circle cx="150" cy="325" r="7" fill="white" opacity=".7" />
+          <circle cx="210" cy="315" r="5" fill="white" opacity=".6" />
+          <circle cx="330" cy="318" r="6" fill="white" opacity=".7" />
+          <circle cx="390" cy="325" r="5" fill="white" opacity=".6" />
+          <!-- Frosting drips tier3 -->
+          <path d="M130 290 Q138 278 148 290" fill="white" opacity=".6" />
+          <path d="M200 290 Q208 275 218 290" fill="white" opacity=".6" />
+          <path d="M340 290 Q350 276 360 290" fill="white" opacity=".6" />
+          <path d="M390 290 Q399 279 410 290" fill="white" opacity=".6" />
+
+          <!-- Tier 2 (middle) -->
+          <rect
+            x="150"
+            y="200"
+            width="240"
+            height="95"
+            rx="12"
+            fill="url(#tier2)"
+            filter="url(#shadow)"
+          />
+          <ellipse
+            cx="270"
+            cy="200"
+            rx="120"
+            ry="12"
+            fill="#b8e4f9"
+            stroke="#87ceeb"
+            stroke-width="1.5"
+          />
+          <ellipse cx="270" cy="295" rx="120" ry="12" fill="#87ceeb" />
+          <!-- Tier 2 decorations -->
+          <circle cx="180" cy="245" r="7" fill="white" opacity=".7" />
+          <circle cx="240" cy="235" r="5" fill="white" opacity=".6" />
+          <circle cx="300" cy="238" r="6" fill="white" opacity=".7" />
+          <circle cx="360" cy="245" r="5" fill="white" opacity=".6" />
+          <!-- Frosting drips tier2 -->
+          <path d="M165 200 Q173 187 183 200" fill="white" opacity=".6" />
+          <path d="M230 200 Q238 185 248 200" fill="white" opacity=".6" />
+          <path d="M310 200 Q318 186 328 200" fill="white" opacity=".6" />
+          <path d="M355 200 Q363 188 373 200" fill="white" opacity=".6" />
+
+          <!-- Tier 1 (top) -->
+          <rect
+            x="200"
+            y="118"
+            width="140"
+            height="86"
+            rx="12"
+            fill="url(#tier3)"
+            filter="url(#shadow)"
+          />
+          <ellipse
+            cx="270"
+            cy="118"
+            rx="70"
+            ry="10"
+            fill="#ffcdd8"
+            stroke="#ffb6c8"
+            stroke-width="1.5"
+          />
+          <ellipse cx="270" cy="204" rx="70" ry="10" fill="#ffb6c8" />
+          <!-- Tier 1 decorations -->
+          <circle cx="225" cy="158" r="6" fill="white" opacity=".7" />
+          <circle cx="270" cy="148" r="5" fill="white" opacity=".6" />
+          <circle cx="315" cy="158" r="6" fill="white" opacity=".7" />
+
+          <!-- Candles -->
+          <rect x="245" y="78" width="8" height="42" rx="4" fill="#87ceeb" />
+          <rect x="264" y="72" width="8" height="48" rx="4" fill="#ffb6c8" />
+          <rect x="283" y="78" width="8" height="42" rx="4" fill="#87ceeb" />
+          <!-- Flames -->
+          <ellipse cx="249" cy="75" rx="5" ry="8" fill="#ffd700" opacity=".9">
+            <animate
+              attributeName="ry"
+              values="8;10;8;6;8"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="cy"
+              values="75;73;75;77;75"
+              dur="1.2s"
+              repeatCount="indefinite"
+            />
+          </ellipse>
+          <ellipse cx="268" cy="69" rx="5" ry="8" fill="#ff8c42" opacity=".9">
+            <animate
+              attributeName="ry"
+              values="8;11;7;9;8"
+              dur=".9s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="cy"
+              values="69;67;71;68;69"
+              dur=".9s"
+              repeatCount="indefinite"
+            />
+          </ellipse>
+          <ellipse cx="287" cy="75" rx="5" ry="8" fill="#ffd700" opacity=".9">
+            <animate
+              attributeName="ry"
+              values="8;6;10;8;8"
+              dur="1.1s"
+              repeatCount="indefinite"
+            />
+            <animate
+              attributeName="cy"
+              values="75;77;73;76;75"
+              dur="1.1s"
+              repeatCount="indefinite"
+            />
+          </ellipse>
+
+          <!-- Floating ingredients -->
+          <g opacity=".7">
+            <!-- Strawberry -->
+            <ellipse cx="60" cy="180" rx="18" ry="20" fill="#ff6b8a">
+              <animate
+                attributeName="cy"
+                values="180;168;180"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </ellipse>
+            <path d="M60 162 Q55 152 60 148 Q65 152 60 162" fill="#2db882" />
+            <circle cx="52" cy="178" r="2" fill="rgba(255,255,255,.5)" />
+            <circle cx="60" cy="185" r="2" fill="rgba(255,255,255,.5)" />
+            <circle cx="68" cy="178" r="2" fill="rgba(255,255,255,.5)" />
+
+            <!-- Blueberry cluster -->
+            <circle cx="480" cy="140" r="12" fill="#6b82ff">
+              <animate
+                attributeName="cy"
+                values="140;128;140"
+                dur="3.5s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="493" cy="148" r="10" fill="#5a70ff">
+              <animate
+                attributeName="cy"
+                values="148;136;148"
+                dur="3.5s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="468" cy="148" r="10" fill="#7a90ff">
+              <animate
+                attributeName="cy"
+                values="148;136;148"
+                dur="3.5s"
+                repeatCount="indefinite"
+              />
+            </circle>
+
+            <!-- Star sprinkle -->
+            <text
+              x="440"
+              y="240"
+              font-size="20"
+              fill="var(--pink-deep)"
+              opacity=".6"
+            >
+              ✦
+              <animate
+                attributeName="y"
+                values="240;228;240"
+                dur="2.5s"
+                repeatCount="indefinite"
+              />
+            </text>
+            <text
+              x="85"
+              y="280"
+              font-size="16"
+              fill="var(--sky-deep)"
+              opacity=".6"
+            >
+              ✦
+              <animate
+                attributeName="y"
+                values="280;270;280"
+                dur="2s"
+                repeatCount="indefinite"
+              />
+            </text>
+            <text
+              x="490"
+              y="300"
+              font-size="14"
+              fill="var(--pink)"
+              opacity=".7"
+            >
+              ✦
+              <animate
+                attributeName="y"
+                values="300;290;300"
+                dur="3s"
+                repeatCount="indefinite"
+              />
+            </text>
+
+            <!-- Cookie -->
+            <circle cx="490" cy="230" r="22" fill="#f5c68a">
+              <animate
+                attributeName="cy"
+                values="230;220;230"
+                dur="4s"
+                repeatCount="indefinite"
+              />
+            </circle>
+            <circle cx="484" cy="224" r="3" fill="#c8822a" />
+            <circle cx="496" cy="224" r="3" fill="#c8822a" />
+            <circle cx="490" cy="234" r="3" fill="#c8822a" />
+            <circle cx="480" cy="233" r="3" fill="#c8822a" />
+            <circle cx="500" cy="234" r="3" fill="#c8822a" />
+          </g>
+
+          <!-- AI dots / neural lines -->
+          <g opacity=".4">
+            <circle cx="40" cy="100" r="4" fill="var(--sky-deep)" />
+            <circle cx="90" cy="80" r="3" fill="var(--pink-deep)" />
+            <circle cx="140" cy="90" r="4" fill="var(--sky-deep)" />
+            <line
+              x1="40"
+              y1="100"
+              x2="90"
+              y2="80"
+              stroke="var(--sky)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+            />
+            <line
+              x1="90"
+              y1="80"
+              x2="140"
+              y2="90"
+              stroke="var(--pink)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+            />
+            <circle cx="400" cy="70" r="4" fill="var(--pink-deep)" />
+            <circle cx="450" cy="90" r="3" fill="var(--sky-deep)" />
+            <circle cx="500" cy="75" r="4" fill="var(--pink-deep)" />
+            <line
+              x1="400"
+              y1="70"
+              x2="450"
+              y2="90"
+              stroke="var(--pink)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+            />
+            <line
+              x1="450"
+              y1="90"
+              x2="500"
+              y2="75"
+              stroke="var(--sky)"
+              stroke-width="1.5"
+              stroke-dasharray="4 3"
+            />
+          </g>
+        </svg>
+      </div>
+
+      <div class="hero-content">
+        <div class="hero-tag">
+          <span class="tag-dot"></span>
+          AI-Powered Baking Automation
+        </div>
+
+        <h1>
+          <span class="hi">Bake Smarter</span>
+          <span class="hi">with <span class="ai-word">Artificial</span></span>
+          <span class="hi"><span class="ai-word">Intelligence</span> ✨</span>
+        </h1>
+
+        <p class="hero-sub">
+          The world's first fully automated AI bakery platform. Smart ovens,
+          predictive recipes, real-time quality control — all wrapped in pure
+          sweetness.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#features" class="btn-main">🍰 Explore Platform</a>
+          <a href="#recipes" class="btn-ghost">📖 View Recipes</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <span class="stat-n">12K+</span>
+            <span class="stat-l">Recipes Automated</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">98%</span>
+            <span class="stat-l">Quality Score</span>
+          </div>
+          <div class="stat">
+            <span class="stat-n">80+</span>
+            <span class="stat-l">Countries</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="scroll-cue">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+    </section>
+
+    <!-- FEATURES / AUTOMATION -->
+    <section class="features-section" id="features">
+      <div class="features-header reveal">
+        <div class="section-label">Automation Suite</div>
+        <h2 class="section-title">
+          Everything a Smart <span>Bakery</span> Needs
+        </h2>
+        <p class="section-desc">
+          From dough to display — our AI handles every step with precision,
+          love, and a pinch of machine learning.
+        </p>
+      </div>
+
+      <div class="features-grid">
+        <div class="feature-card wide reveal">
+          <div class="wide-visual">
+            <svg
+              viewBox="0 0 160 130"
+              xmlns="http://www.w3.org/2000/svg"
+              width="160"
+            >
+              <circle
+                cx="80"
+                cy="65"
+                r="55"
+                fill="var(--pink-soft)"
+                stroke="var(--pink)"
+                stroke-width="1.5"
+              />
+              <circle
+                cx="80"
+                cy="65"
+                r="38"
+                fill="white"
+                stroke="var(--sky)"
+                stroke-width="1"
+              />
+              <circle
+                cx="80"
+                cy="65"
+                r="20"
+                fill="var(--sky-soft)"
+                stroke="var(--sky-deep)"
+                stroke-width="1.5"
+              />
+              <circle cx="80" cy="65" r="8" fill="var(--pink-deep)" />
+              <line
+                x1="80"
+                y1="10"
+                x2="80"
+                y2="45"
+                stroke="var(--pink)"
+                stroke-width="2"
+              />
+              <line
+                x1="80"
+                y1="85"
+                x2="80"
+                y2="120"
+                stroke="var(--pink)"
+                stroke-width="2"
+              />
+              <line
+                x1="25"
+                y1="65"
+                x2="60"
+                y2="65"
+                stroke="var(--sky-deep)"
+                stroke-width="2"
+              />
+              <line
+                x1="100"
+                y1="65"
+                x2="135"
+                y2="65"
+                stroke="var(--sky-deep)"
+                stroke-width="2"
+              />
+              <circle cx="80" cy="10" r="5" fill="var(--sky)" />
+              <circle cx="80" cy="120" r="5" fill="var(--sky)" />
+              <circle cx="25" cy="65" r="5" fill="var(--pink)" />
+              <circle cx="135" cy="65" r="5" fill="var(--pink)" />
+            </svg>
+          </div>
+          <div>
+            <div class="feat-icon fi-mixed">🧠</div>
+            <h3>Neural Recipe Engine</h3>
+            <p>
+              Our AI analyses thousands of bakery recipes, learns from master
+              bakers worldwide, and generates perfect formulas optimised for
+              your oven, altitude, humidity, and ingredient brands. Recipes that
+              adapt in real-time.
+            </p>
+            <span class="feat-badge">DEEP LEARNING</span>
+          </div>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feat-icon fi-pink">🌡️</div>
+          <h3>Smart Oven Control</h3>
+          <p>
+            AI-driven temperature curves that adjust every 30 seconds based on
+            dough sensors. Achieve bakery-grade results in any home or
+            commercial oven.
+          </p>
+          <span class="feat-badge">IoT INTEGRATION</span>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feat-icon fi-sky">⚖️</div>
+          <h3>Precision Ingredient AI</h3>
+          <p>
+            Computer vision scales that weigh and verify every ingredient in
+            real-time. Catches substitutions and suggests swaps based on dietary
+            needs.
+          </p>
+          <span class="feat-badge">COMPUTER VISION</span>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feat-icon fi-pink">📸</div>
+          <h3>Visual Quality Control</h3>
+          <p>
+            AI camera scans every baked good for color, rise, texture, and
+            imperfections — grading to professional bakery standards
+            automatically.
+          </p>
+          <span class="feat-badge">CV INSPECTION</span>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feat-icon fi-sky">🔄</div>
+          <h3>Dough Automation Robot</h3>
+          <p>
+            Robotic mixing arms with AI torque control ensure perfect dough
+            consistency every single time, regardless of flour batch variation.
+          </p>
+          <span class="feat-badge">ROBOTICS</span>
+        </div>
+
+        <div class="feature-card reveal">
+          <div class="feat-icon fi-mixed">📊</div>
+          <h3>Production Analytics</h3>
+          <p>
+            Real-time dashboards showing batch efficiency, waste reduction,
+            energy usage, and profitability — all powered by predictive AI
+            models.
+          </p>
+          <span class="feat-badge">ANALYTICS</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="process-section" id="process">
+      <div class="process-layout">
+        <div class="process-left reveal-left">
+          <div class="section-label">How It Works</div>
+          <h2 class="section-title">
+            Baking, <span>Reimagined</span><br />Step by Step
+          </h2>
+          <p class="section-desc" style="margin-bottom: 2.5rem">
+            From ingredient prep to final decoration — every stage is
+            intelligently orchestrated by our AI automation layer.
+          </p>
+
+          <div class="steps">
+            <div class="step">
+              <div class="step-badge">01</div>
+              <div>
+                <h4>Recipe Selection & Scaling</h4>
+                <p>
+                  Choose from 12,000+ recipes. AI scales quantities, adjusts for
+                  your equipment, and creates a personalised baking plan in
+                  seconds.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-badge">02</div>
+              <div>
+                <h4>Ingredient Prep & Verification</h4>
+                <p>
+                  Smart scales guide you through each ingredient. Vision AI
+                  confirms correct measures and freshness before you proceed.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-badge">03</div>
+              <div>
+                <h4>AI-Guided Mixing & Proofing</h4>
+                <p>
+                  Sensor feedback ensures perfect dough development. AI monitors
+                  gluten formation, hydration, and temperature for flawless
+                  consistency.
+                </p>
+              </div>
+            </div>
+            <div class="step">
+              <div class="step-badge">04</div>
+              <div>
+                <h4>Smart Baking & Quality Check</h4>
+                <p>
+                  Automated oven profiles bake to perfection. AI vision inspects
+                  every item, and results are logged for continuous improvement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="process-right reveal-right">
+          <div class="oven-card">
+            <div class="oven-header">
+              <span class="oven-title">🤖 AI Oven Dashboard</span>
+              <span class="oven-status">BAKING ACTIVE</span>
+            </div>
+
+            <div class="temp-display">
+              <div class="temp-num" id="tempNum">185°C</div>
+              <div class="temp-label">Oven Temperature · Target: 190°C</div>
+            </div>
+
+            <div class="sensor-row">
+              <div class="sensor-item">
+                <span class="sensor-name">Humidity</span>
+                <div class="sensor-bar">
+                  <div class="sensor-fill" style="width: 62%"></div>
+                </div>
+                <span class="sensor-val">62%</span>
+              </div>
+              <div class="sensor-item">
+                <span class="sensor-name">Dough Rise</span>
+                <div class="sensor-bar">
+                  <div class="sensor-fill" style="width: 78%"></div>
+                </div>
+                <span class="sensor-val">78%</span>
+              </div>
+              <div class="sensor-item">
+                <span class="sensor-name">Crust Colour</span>
+                <div class="sensor-bar">
+                  <div class="sensor-fill" style="width: 55%"></div>
+                </div>
+                <span class="sensor-val">55%</span>
+              </div>
+              <div class="sensor-item">
+                <span class="sensor-name">Steam Level</span>
+                <div class="sensor-bar">
+                  <div class="sensor-fill" style="width: 40%"></div>
+                </div>
+                <span class="sensor-val">40%</span>
+              </div>
+              <div class="sensor-item">
+                <span class="sensor-name">AI Confidence</span>
+                <div class="sensor-bar">
+                  <div class="sensor-fill" style="width: 96%"></div>
+                </div>
+                <span class="sensor-val">96%</span>
+              </div>
+            </div>
+
+            <div
+              style="
+                margin-top: 1.4rem;
+                padding-top: 1.2rem;
+                border-top: 1px dashed rgba(255, 182, 200, 0.4);
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+              "
+            >
+              <span style="font-size: 0.82rem; color: var(--muted)"
+                >⏱ Est. complete: <strong>18 min</strong></span
+              >
+              <span style="font-size: 0.82rem; color: var(--muted)"
+                >Batch: <strong>Croissants ×12</strong></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECIPES -->
+    <section class="recipes-section" id="recipes">
+      <div class="recipes-header reveal">
+        <div class="section-label">AI Recipe Library</div>
+        <h2 class="section-title">
+          Curated by <span>AI</span>, Loved by Bakers
+        </h2>
+        <p class="section-desc" style="margin: 0 auto">
+          Every recipe is automatically optimised, tested by our neural
+          networks, and rated by thousands of bakers worldwide.
+        </p>
+      </div>
+
+      <div class="recipes-grid">
+        <div class="recipe-card reveal">
+          <div class="recipe-img ri-pink">
+            <span class="recipe-img-emoji">🥐</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Butter Croissants</h3>
+            <p>
+              Laminated dough with 27 buttery layers. AI perfects every fold for
+              that iconic honeycomb crumb structure.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 3h 20m</span>
+              <span class="meta-pill">⭐ 4.9</span>
+              <span class="meta-pill">🔥 Medium</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-card reveal">
+          <div class="recipe-img ri-sky">
+            <span class="recipe-img-emoji">🍰</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Chiffon Layer Cake</h3>
+            <p>
+              Cloud-light sponge with AI-calibrated sugar, fat, and leavening
+              ratios for the tallest, fluffiest layers imaginable.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 1h 45m</span>
+              <span class="meta-pill">⭐ 4.8</span>
+              <span class="meta-pill">🔥 Easy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-card reveal">
+          <div class="recipe-img ri-mixed">
+            <span class="recipe-img-emoji">🍞</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Sourdough Artisan Loaf</h3>
+            <p>
+              72-hour cold-fermented dough with AI-tracked starter activity and
+              custom scoring patterns for professional crust.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 72h+</span>
+              <span class="meta-pill">⭐ 5.0</span>
+              <span class="meta-pill">🔥 Advanced</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-card reveal">
+          <div
+            class="recipe-img ri-pink"
+            style="background: linear-gradient(160deg, #fff8e1, #ffe082)"
+          >
+            <span class="recipe-img-emoji">🍩</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Glazed Donuts</h3>
+            <p>
+              Pillowy yeast donuts with precise fry-time AI control and
+              automated glaze coating for uniform coverage.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 2h 10m</span>
+              <span class="meta-pill">⭐ 4.7</span>
+              <span class="meta-pill">🔥 Easy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-card reveal">
+          <div class="recipe-img ri-sky">
+            <span class="recipe-img-emoji">🫐</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Blueberry Muffins</h3>
+            <p>
+              Bakery-style dome tops achieved through AI-calculated batter
+              viscosity and steam-injection timing in the first 5 minutes.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 35m</span>
+              <span class="meta-pill">⭐ 4.9</span>
+              <span class="meta-pill">🔥 Easy</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="recipe-card reveal">
+          <div class="recipe-img ri-mixed">
+            <span class="recipe-img-emoji">🎂</span>
+            <span class="ai-badge">AI OPTIMISED</span>
+          </div>
+          <div class="recipe-body">
+            <h3>Macaron Tower</h3>
+            <p>
+              French macarons with AI humidity compensation, aged-egg detection,
+              and robotic piping for perfectly uniform shells.
+            </p>
+            <div class="recipe-meta">
+              <span class="meta-pill">⏱ 4h</span>
+              <span class="meta-pill">⭐ 4.8</span>
+              <span class="meta-pill">🔥 Expert</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AUTOMATION DASHBOARD -->
+    <section class="dashboard-section" id="dashboard">
+      <div class="dash-layout">
+        <div class="dash-left reveal-left">
+          <div class="section-label">Live Dashboard</div>
+          <h2 class="section-title">
+            Real-Time <span>Bakery</span> Intelligence
+          </h2>
+          <p class="section-desc">
+            Monitor every batch, track waste, optimise energy, and watch your AI
+            bakery perform at peak efficiency — all from one beautiful
+            dashboard.
+          </p>
+          <br />
+          <a
+            href="#cta"
+            class="btn-main"
+            style="display: inline-flex; margin-top: 0.5rem"
+            >📊 See Full Dashboard</a
+          >
+        </div>
+
+        <div class="dash-right reveal-right">
+          <div class="dash-grid">
+            <div class="dash-card">
+              <div class="dash-card-icon">🍰</div>
+              <div class="dash-card-val">284</div>
+              <div class="dash-card-label">Items Baked Today</div>
+              <div class="dash-card-trend">↑ 12% vs yesterday</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">✅</div>
+              <div class="dash-card-val">99.1%</div>
+              <div class="dash-card-label">Quality Pass Rate</div>
+              <div class="dash-card-trend">↑ 0.3% this week</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">⚡</div>
+              <div class="dash-card-val">-34%</div>
+              <div class="dash-card-label">Energy vs Manual</div>
+              <div class="dash-card-trend">↓ Savings: $218/mo</div>
+            </div>
+            <div class="dash-card">
+              <div class="dash-card-icon">🌿</div>
+              <div class="dash-card-val">2.4%</div>
+              <div class="dash-card-label">Ingredient Waste</div>
+              <div class="dash-card-trend">↓ Industry avg: 18%</div>
+            </div>
+            <div class="chart-card">
+              <div class="chart-title">📈 Batches This Week</div>
+              <div class="chart-bars" id="chartBars">
+                <div class="bar" style="height: 55%"></div>
+                <div class="bar" style="height: 72%"></div>
+                <div class="bar" style="height: 60%"></div>
+                <div class="bar" style="height: 85%"></div>
+                <div class="bar" style="height: 70%"></div>
+                <div class="bar" style="height: 95%"></div>
+                <div class="bar" style="height: 78%"></div>
+              </div>
+              <div class="chart-labels">
+                <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span
+                ><span>Fri</span><span>Sat</span><span>Sun</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials-section" id="testimonials">
+      <div class="testi-header reveal">
+        <div class="section-label">Bakers Love Us</div>
+        <h2 class="section-title">Sweet Words from <span>Real Bakers</span></h2>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal">
+          <div class="testi-quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">
+            Pâtisserie AI transformed our small bakery. We went from 80 items a
+            day to 340 with the same two staff. The sourdough AI alone paid for
+            the whole subscription in the first month.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">LB</div>
+            <div>
+              <div class="testi-name">Léa Beaumont</div>
+              <div class="testi-role">Owner, Maison Léa — Lyon, France</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">
+            I was skeptical about AI in baking. But the Neural Recipe Engine
+            suggested a humidity adjustment to my macarons that I'd never
+            thought of — and they've been perfect ever since. Genuinely magical.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">KM</div>
+            <div>
+              <div class="testi-name">Kenji Murakami</div>
+              <div class="testi-role">Head Pastry Chef, Tokyo Sky Hotel</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal">
+          <div class="testi-quote-mark">"</div>
+          <div class="stars">⭐⭐⭐⭐⭐</div>
+          <p class="testi-text">
+            The quality control AI catches every single overcooked biscuit
+            before it reaches the customer. Our returns dropped to zero and our
+            Google reviews jumped from 4.1 to 4.9 stars in three months.
+          </p>
+          <div class="testi-author">
+            <div class="testi-avatar">SN</div>
+            <div>
+              <div class="testi-name">Sophie Nkosi</div>
+              <div class="testi-role">Founder, Sugar & Spice — Cape Town</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="pricing-section" id="pricing">
+      <div class="pricing-header reveal">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">
+          Plans as <span>Sweet</span> as Our Pastries
+        </h2>
+        <p class="section-desc" style="margin: 0 auto">
+          No hidden fees. Cancel anytime. Every plan includes a 14-day free
+          trial.
+        </p>
+      </div>
+      <div class="pricing-grid">
+        <div class="price-card reveal">
+          <div class="plan-name">Home Baker</div>
+          <div class="plan-price"><sup>$</sup>19</div>
+          <div class="plan-per">/ month · 1 oven</div>
+          <ul class="plan-feats">
+            <li>500 AI recipe suggestions</li>
+            <li>Smart oven temperature guide</li>
+            <li>Ingredient scaling AI</li>
+            <li>Basic quality scoring</li>
+            <li class="off">Robotic arm integration</li>
+            <li class="off">Production analytics</li>
+            <li class="off">Custom neural model</li>
+          </ul>
+          <button class="btn-plan btn-plan-outline">Start Free Trial 🎂</button>
+        </div>
+        <div class="price-card popular reveal">
+          <div class="popular-tag">MOST POPULAR</div>
+          <div class="plan-name">Artisan Bakery</div>
+          <div class="plan-price"><sup>$</sup>79</div>
+          <div class="plan-per">/ month · up to 5 ovens</div>
+          <ul class="plan-feats">
+            <li>Unlimited AI recipes</li>
+            <li>Full oven automation</li>
+            <li>Visual quality control</li>
+            <li>Production analytics</li>
+            <li>Waste reduction AI</li>
+            <li>Priority support</li>
+            <li class="off">Custom neural model</li>
+          </ul>
+          <button class="btn-plan btn-plan-fill">Start Free Trial ✨</button>
+        </div>
+        <div class="price-card reveal">
+          <div class="plan-name">Enterprise</div>
+          <div class="plan-price" style="font-size: 2.2rem">Custom</div>
+          <div class="plan-per">Unlimited ovens · Global SLA</div>
+          <ul class="plan-feats">
+            <li>Everything in Artisan</li>
+            <li>Robotic arm full integration</li>
+            <li>Custom neural recipe model</li>
+            <li>White-label dashboard</li>
+            <li>Dedicated AI trainer</li>
+            <li>99.99% uptime SLA</li>
+            <li>On-premise option</li>
+          </ul>
+          <button class="btn-plan btn-plan-outline">Contact Sales 🤝</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta-section" id="cta">
+      <h2>Ready to Bake the <em style="font-style: italic">Future?</em></h2>
+      <p>
+        Join 12,000+ bakers who've automated their kitchens with Pâtisserie AI.
+        Start your free trial — no credit card required.
+      </p>
+      <div class="cta-btns">
+        <a href="#" class="btn-main btn-white" style="color: var(--pink-deep)"
+          >🍰 Start Free Today</a
+        >
+        <a href="#" class="btn-main btn-transparent"
+          >📞 Talk to a Baker-Engineer</a
+        >
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="logo">
+            <div class="logo-icon">🍰</div>
+            Pâtisserie<span
+              style="
+                background: linear-gradient(
+                  135deg,
+                  var(--pink-deep),
+                  var(--sky-deep)
+                );
+                background-clip: text;
+                -webkit-text-fill-color: transparent;
+              "
+            >
+              AI</span
+            >
+          </a>
+          <p>
+            AI automation for artisan bakeries everywhere. Bake smarter, waste
+            less, delight more.
+          </p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">AI Recipe Engine</a></li>
+            <li><a href="#">Oven Automation</a></li>
+            <li><a href="#">Quality Control</a></li>
+            <li><a href="#">Analytics</a></li>
+            <li><a href="#">Integrations</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press Kit</a></li>
+            <li><a href="#">Partners</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">Help Centre</a></li>
+            <li><a href="#">Community</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Pâtisserie AI. Baked with and machine learning.</span>
+        <div style="display: flex; gap: 1.5rem">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- COOKIE BAR (fun touch) -->
+    <div class="cookie-bar" id="cookieBar">
+      <span
+        >🍪 We use cookies — the digital kind. The baked kind are in the recipe
+        library.</span
+      >
+      <button
+        class="cookie-btn"
+        onclick="document.getElementById('cookieBar').style.display = 'none'"
+      >
+        Accept 🍪
+      </button>
+      <button
+        class="cookie-close"
+        onclick="document.getElementById('cookieBar').style.display = 'none'"
+      >
+        ✕
+      </button>
+    </div>
+  </body>
+</html>
